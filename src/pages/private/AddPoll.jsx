@@ -52,9 +52,9 @@ function AddPoll({ getProjects }) {
       }
     
     const body = { question, theme, description, options };
+    /* const storedToken = localStorage.getItem('authToken') */
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/Addpoll`, body, {
+    axios.post(`${process.env.REACT_APP_API_URL}/Addpoll`, body, {
         headers: {
           Authorization: `Bearer ${user._id}`
         }
@@ -75,7 +75,7 @@ function AddPoll({ getProjects }) {
       <h4 className="mt-4 text-xl text-center font-bold">
       <p>Add Poll</p>
       </h4>
-      <section  class="bg-white w-full rounded divide-y divide-gray-600 my-10">
+      <section class="bg-white w-full rounded divide-y divide-gray-600 my-10">
         <form onSubmit={handleSubmit} class="bg-white shadow-md rounded-3xl px-8 pt-6 pb-8 mb-10 my-5 border-2 mx-10 overflow-auto">
 
           <label class="mb-1 ml-4 text-xs text-left block mt-2 text-gray-600 font-bold">Question</label>

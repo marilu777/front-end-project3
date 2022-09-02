@@ -28,14 +28,14 @@ function App() {
       <Routes>
             <Route path="/" element={<IsPrivate><HomePage /></IsPrivate>}/>
 
-            <Route path="/user" element={ <IsPrivate><UserProfile /></IsPrivate>}/>
-            <Route path="/user/edit" element={ <IsPrivate><UserEdit /></IsPrivate>}/>
+            <Route path="/user/:userId" element={ <IsPrivate><UserProfile /></IsPrivate>}/>
+            <Route path="/user/:userId/edit" element={ <IsPrivate><UserEdit /></IsPrivate>}/>
 
             <Route path="/Addpoll" element={<IsPrivate><AddPoll/></IsPrivate> }/>
             <Route path="/mypolls" element={ <IsPrivate><PollsPage /></IsPrivate>}/>
 
             <Route path="/votePoll/:id" element={ <IsPrivate><VotePoll /></IsPrivate>}/>
-            <Route path="/voteResult" element={ <PollDetails />}/>
+            <Route path="/voteResult/:id" element={ <PollDetails />}/>
       
         
             <Route path="/signup" element={ <IsAnon><Signup/></IsAnon> } />

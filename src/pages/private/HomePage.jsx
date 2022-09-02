@@ -47,26 +47,30 @@ function HomePage() {
     <section className='flex flex-wrap overflow-auto mb-10'>
     {polls.map((poll) => {
         return(
-            <div key={poll} class="max-w-sm overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-xl mb-4 border border-teal-700 w-full mx-12">
+            <div key={poll} class="max-w-sm overflow-hidden rounded-lg bg-white shadow-md duration-300 mb-10 border border-red-900 w-full mx-12 ">
                 <Link to={`/${poll._id}`}>
-                    <h4 className='text-sm text-center font-medium underline decoration-dotted decoration-slate-400'>{poll.question}</h4>
+                    <h4 className='text-sm text-center font-medium'>{poll.question}</h4>
                     <h4 className='text-xs text-left ml-6'>Theme: {poll.theme}</h4>
-                    <h4 className='text-xs text-left mx-6 border border-teal-700 rounded-lg'>{poll.description}</h4>
-                    
+                    <h4 className='text-xs text-left mx-6 border border-y-red-800 '>{poll.description}</h4>
+                    <h4 className='mt-2'>
                     {poll.options.map((el) => {
                             return (
                                 <>
-                                   <p className='text-xs'>{el.text} : {el.voteCount}</p> 
+                                   <p className='text-xs'>{el.text}   {el.voteCount}</p> 
                                 </>
                             )
                         })}
-                    
+                    </h4>
+                   <div class="mb-4 mt-6 text-center">
+                    <Link to={`/votepoll/${poll._id}`} class="transition duration-500 hover:bg-amber-900/50 hover:scale-105 hover:shadow-xl text-red-900 border border-red-900 rounded-3xl font-bold py-1 px-2 focus:outline-none focus:shadow-outline shadow-md text-xs">Vote</Link>
+                   </div> 
                 </Link>
-
-                <Link to={`/votepoll/${poll._id}`} className="text-xs border-dotted border border-black-400/50 rounded-full m-2 text-zinc-400">Vote</Link>
+                
+                
             </div>
                 )
             })}
+      
     </section>
     <div className='mb-5'></div>
     </div>

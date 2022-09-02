@@ -51,11 +51,11 @@ function PollsPage() {
         <section className='flex flex-wrap overflow-auto mb-10'>
         {polls && polls.map((poll) => {
             return(
-                <div key={poll._id} class="max-w-sm overflow-hidden rounded-lg bg-white shadow-md duration-300 hover:scale-105 hover:shadow-xl mb-4 border border-teal-700 w-full mx-12">
+                <div key={poll._id} class="max-w-sm overflow-hidden rounded-lg bg-white shadow-md duration-300 mb-10 border border-red-900 w-full mx-12">
                     <Link to={`/mypolls/${poll._id}`}>
-                        <h4 className='text-sm text-center font-medium underline decoration-dotted decoration-slate-400'>{poll.question}</h4>
+                        <h4 className='text-sm text-center font-medium'>{poll.question}</h4>
                         <h4 className='text-xs text-left ml-6'>Theme: {poll.theme}</h4>
-                        <h4 className='text-xs text-left mx-6 border border-teal-700 rounded-lg'>{poll.description}</h4>
+                        <h4 className='text-xs text-left mx-6 border border-y-red-800'>{poll.description}</h4>
                         
                         {poll.options.map((el) => {
                             return (

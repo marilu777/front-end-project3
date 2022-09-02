@@ -8,14 +8,13 @@ import DoughnutChart from './DoughnutChart';
 function PollDetails() {
 
     const [pollDetails, setPollDetails] = useState(null)
-    const [comments, setComments] = useState()
+    const [comments, setComments] = useState() 
     const {id} = useParams();
-    console.log(poll)
     const storedToken = localStorage.getItem('authToken')
 
     const getPollDetails = async () => {
         try {
-            let response = await axios.get(`${process.env.REACT_APP_API_URL}/poll/pollResult/${id}`, {
+            let response = await axios.get(`${process.env.REACT_APP_API_URL}/poll/${id}`, {
                 headers: {
                     Authorization: `Bearer ${storedToken}`
                 }});
@@ -78,24 +77,28 @@ function PollDetails() {
 
 
     useEffect(() => {
-        getProject();
+        getPollDetails();
     }, [])
 
   return (
     <div >
-        <h2>Results</h2>
+        <h2 className="mb-8 text-xl text-center font-bold ">Results</h2>
         <div>
-           <DoughnutChart options={chartOptions} data={chartData}/> 
+           {/* <DoughnutChart options={chartOptions} data={chartData}/>  */}
         </div>
-        <div>
+        <div class="bg-white shadow-md rounded-3xl px-8 pt-6 pb-8 mb-10 my-5 border-2 mx-10 overflow-auto">
             {pollDetails && (
                 <>
-                <p>Question: {pollDetails.question}</p>
-                <p>Theme:{pollDetails.theme}</p>
-                {poll.options.map((el) => {
+                <p class="mb-1 ml-4 text-sm text-left block mt-2 text-gray-600 font-bold">Question: {pollDetails.question}</p>
+                <p class="mb-4 ml-4 text-sm text-left block mt-2 text-gray-600 font-bold">Theme: {pollDetails.theme}</p>
+                {pollDetails.options.map((el) => {
                     return (
                         <>
-                        <p>{el.text} : {el.voteCount}</p>
+                        <div className='flex justify-between mx-12'>
+                            <p className='text-sm mb-2'>• {el.text} </p> 
+                            <p className='text-sm mb-2'>{el.voteCount}</p>  
+                        </div>
+                        
                         </>
                     )
                 })}
@@ -103,16 +106,16 @@ function PollDetails() {
                 )}      
         </div>
         <div>
-            {comments && (
+           {/*  {comments && (
                 <>
                 <p>{comments.author}</p>
                 <p>{comments.content}</p>
                 </>
-            )}
+            )} */}
         </div>
 
         <Link to="/">
-            <button>Go back</button>
+            <button className='hover:text-sky-500 mb-15'>Go back</button>
         </Link>
 
     </div>

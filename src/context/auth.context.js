@@ -14,29 +14,30 @@ function AuthProviderWrapper(props) {
     localStorage.setItem('authToken', token);
   }
 
-  const authenticateUser = () => {        
-    const storedToken = localStorage.getItem('authToken');
-    if (storedToken) {
-      axios.get(
-        `${process.env.REACT_APP_API_URL}/verify`, 
-        { headers: { Authorization: `Bearer ${storedToken}`} }
-      )
-      .then((response) => {
-        const user = response.data;      
-        setIsLoggedIn(true);
-        setIsLoading(false);
-        setUser(user);        
-      })
-      .catch((error) => {     
-        setIsLoggedIn(false);
-        setIsLoading(false);
-        setUser(null);        
-      });      
-    } else {
-        setIsLoggedIn(false);
-        setIsLoading(false);
-        setUser(null);      
-    }   
+  const authenticateUser = () => {   
+  
+    // const storedToken = localStorage.getItem('authToken');
+    // if (storedToken) {
+    //   axios.get(
+    //     `${process.env.REACT_APP_API_URL}/verify`, 
+    //     { headers: { Authorization: `Bearer ${storedToken}`} }
+    //   )
+    //   .then((response) => {
+    //     const user = response.data;      
+    //     setIsLoggedIn(true);
+    //     setIsLoading(false);
+    //     setUser(user);        
+    //   })
+    //   .catch((error) => {     
+    //     setIsLoggedIn(false);
+    //     setIsLoading(false);
+    //     setUser(null);        
+    //   });      
+    // } else {
+    //     setIsLoggedIn(false);
+    //     setIsLoading(false);
+    //     setUser(null);      
+    // }   
   }
  
   const removeToken = () => {                    

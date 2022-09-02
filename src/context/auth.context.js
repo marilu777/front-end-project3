@@ -14,7 +14,8 @@ function AuthProviderWrapper(props) {
     localStorage.setItem('authToken', token);
   }
 
-  const authenticateUser = () => {        
+  const authenticateUser = () => {   
+  return;
     const storedToken = localStorage.getItem('authToken');
     if (storedToken) {
       axios.get(
